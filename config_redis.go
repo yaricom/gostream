@@ -45,11 +45,11 @@ func (r *RedisConfig) BuildKey(key string) string {
 // RedisStreamConfig is the configuration of the data stream based on Redis
 type RedisStreamConfig struct {
 	RedisConfig
-	MaxLength        int64
-	MaxPendingLength int64
-	ConsumerID       string
-	GroupID          string
-	StreamName       string
+	MaxLength        int64  // the maximum allowed length of the data stream. When reached the old messages will be evicted automatically.
+	MaxPendingLength int64  // the maximal number of pending messages allowed per group/consumer
+	ConsumerID       string // the name of data consumer
+	GroupID          string // the name of group of data consumers
+	StreamName       string // the data stream name
 }
 
 // Validate is to validate Redis configuration
