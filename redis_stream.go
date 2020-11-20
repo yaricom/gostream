@@ -18,26 +18,14 @@ const (
 )
 
 type redisStream struct {
-	// rdb is the client for Redis database
-	rdb *redis.Client
-	// the configuration object
-	config *RedisStreamConfig
-
-	// the soft cap limit on stream length
-	maxLen int64
-	// the ID of consumer
-	consumerID string
-	// the ID of the group
-	groupID string
-	// the name of the stream
-	stream string
-
-	// the ID of the last read event
-	lastID string
-
+	rdb        *redis.Client
+	config     *RedisStreamConfig
+	maxLen     int64  // the soft cap limit on stream length
+	consumerID string // the ID of consumer
+	groupID    string // the ID of the group
+	stream     string // the name of the stream
+	lastID     string // the ID of the last read event
 	sync.Mutex
-
-	// the logger
 	log *zap.Logger
 }
 
